@@ -18,14 +18,10 @@ namespace RigoBikeshop.Infraestructure.Data
 
                 SqlParameter IdFacEnc = new SqlParameter("@P_IdFacturaEncabezado", oFacturaDetalle.IdFacturaEncabezado);
                 SqlParameter IdProd = new SqlParameter("@P_IdProducto", oFacturaDetalle.IdProducto);
-                SqlParameter CodigoProducto = new SqlParameter("@P_CodigoProducto", oFacturaDetalle.CodigoProducto);
-                SqlParameter NombreProducto = new SqlParameter("@P_NombreProducto", oFacturaDetalle.NombreProducto);
                 SqlParameter cantidad = new SqlParameter("@P_cantidad", oFacturaDetalle.Cantidad);
 
                 ListaDetalle.Add(IdFacEnc);
                 ListaDetalle.Add(IdProd);
-                ListaDetalle.Add(CodigoProducto);
-                ListaDetalle.Add(NombreProducto);
                 ListaDetalle.Add(cantidad);
 
 
@@ -40,19 +36,15 @@ namespace RigoBikeshop.Infraestructure.Data
 
                 List<SqlParameter> ListaDetalle = new List<SqlParameter>();
 
-                SqlParameter IdFacEnc = new SqlParameter("@P_IdFacturaEncabezado", Linea.IdFacturaEncabezado);
-                SqlParameter IdProd = new SqlParameter("@P_IdProducto", Linea.IdProducto);
-                SqlParameter CodigoProducto = new SqlParameter("@P_CodigoProducto", Linea.CodigoProducto);
-                SqlParameter NombreProducto = new SqlParameter("@P_NombreProducto", Linea.NombreProducto);
-                SqlParameter cantidad = new SqlParameter("@P_cantidad", Linea.Cantidad);
+                SqlParameter IdFacEnc = new SqlParameter("@P_IdFacturaEncabezado", oFacturaDetalle.IdFacturaEncabezado);
+                SqlParameter IdProd = new SqlParameter("@P_IdProducto", oFacturaDetalle.IdProducto);
+                SqlParameter cantidad = new SqlParameter("@P_cantidad", oFacturaDetalle.Cantidad);
 
                 ListaDetalle.Add(IdFacEnc);
                 ListaDetalle.Add(IdProd);
-                ListaDetalle.Add(CodigoProducto);
-                ListaDetalle.Add(NombreProducto);
                 ListaDetalle.Add(cantidad);
 
-                Conexion.EjecutarOperacion("FacturaDetalleUpdate", listaInsertar, CommandType.StoredProcedure);
+                Conexion.EjecutarOperacion("FacturaDetalleUpdate", ListaDetalle, CommandType.StoredProcedure);
         }
 
 
