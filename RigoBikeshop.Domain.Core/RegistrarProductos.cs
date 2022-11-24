@@ -8,12 +8,7 @@ namespace Domain.core
 {
     public class RegistrarProductos
     {
-        //private readonly ProductoPersistence ProducPer;
 
-        public RegistrarProductos(/*ProductoPersistence producPer*/)
-        {
-            //producPer = ProducPer;
-        }
 
         public static DataTable ConsultarProductos()
         {

@@ -8,7 +8,7 @@ namespace RigoBikeshop.Infraestructure.Data
     public static class FacturaPersistence
     {
 
-        //public readOnly Poducto prod;
+        
         public static DataTable GetAllFacturas()
         {
 
@@ -56,34 +56,7 @@ namespace RigoBikeshop.Infraestructure.Data
 
             Conexion.EjecutarOperacion("FacturaEncabezadoInsert", listaInsertar, CommandType.StoredProcedure);
             int idEncabezado = (int)paramId.Value;
-            foreach (FacturaDetalle Linea in oFacturaEncabezado.Lineas)
-            {
-                List<SqlParameter> ListaDetalle = new List<SqlParameter>();
-
-                Linea.IdFacturaEncabezado = idEncabezado;
-
-                SqlParameter IdFacDetalle = new SqlParameter("@P_Identity", SqlDbType.Int)
-                {
-                    Direction = ParameterDirection.Output
-                };
-
-                SqlParameter IdFacEnc = new SqlParameter("@P_IdFacturaEncabezado", Linea.IdFacturaEncabezado);
-                SqlParameter IdProd = new SqlParameter("@P_IdProducto", Linea.IdProducto);
-                SqlParameter CodigoProducto = new SqlParameter("@P_CodigoProducto", Linea.CodigoProducto);
-                SqlParameter NombreProducto = new SqlParameter("@P_NombreProducto", Linea.NombreProducto);
-                SqlParameter cantidad = new SqlParameter("@P_cantidad", Linea.Cantidad);
-
-                ListaDetalle.Add(IdFacEnc);
-                ListaDetalle.Add(IdProd);
-                ListaDetalle.Add(CodigoProducto);
-                ListaDetalle.Add(NombreProducto);
-                ListaDetalle.Add(cantidad);
-                ListaDetalle.Add(IdFacDetalle);// agrega el idDetalle
-
-                Conexion.EjecutarOperacion("FacturaDetalleInsert", ListaDetalle, CommandType.StoredProcedure);
-                int idDetalle = (int)IdFacDetalle.Value;
-            }
-
+           
         }
 
         public static void UpdateFactura(FacturaEncabezado oFacturaEncabezado)
@@ -105,25 +78,6 @@ namespace RigoBikeshop.Infraestructure.Data
             listaInsertar.Add(FechaFactura);
 
             Conexion.EjecutarOperacion("FacturaEncabezadoUpdate", listaInsertar, CommandType.StoredProcedure);
-
-            foreach (FacturaDetalle Linea in oFacturaEncabezado.Lineas)
-            {
-                List<SqlParameter> ListaDetalle = new List<SqlParameter>();
-
-                SqlParameter IdFacEnc = new SqlParameter("@P_IdFacturaEncabezado", Linea.IdFacturaEncabezado);
-                SqlParameter IdProd = new SqlParameter("@P_IdProducto", Linea.IdProducto);
-                SqlParameter CodigoProducto = new SqlParameter("@P_CodigoProducto", Linea.CodigoProducto);
-                SqlParameter NombreProducto = new SqlParameter("@P_NombreProducto", Linea.NombreProducto);
-                SqlParameter cantidad = new SqlParameter("@P_cantidad", Linea.Cantidad);
-
-                ListaDetalle.Add(IdFacEnc);
-                ListaDetalle.Add(IdProd);
-                ListaDetalle.Add(CodigoProducto);
-                ListaDetalle.Add(NombreProducto);
-                ListaDetalle.Add(cantidad);
-
-                Conexion.EjecutarOperacion("FacturaDetalleUpdate", listaInsertar, CommandType.StoredProcedure);
-            }
         }
 
         public static void DeleteFactura(FacturaEncabezado ofacturaEncabezado)
