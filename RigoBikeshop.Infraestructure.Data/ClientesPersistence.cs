@@ -4,9 +4,9 @@ using System.Data;
 using RigoBikeshop.Domain.Entities;
 namespace RigoBikeshop.Infraestructure.Data
 {
-    public class ClientesPersistence
+    public static class ClientesPersistence
     {
-        public DataTable GetAllClientes()
+        public static DataTable GetAllClientes()
         {
 
             if (Conexion.EjecutarConsulta("GetAllClientes", CommandType.StoredProcedure).Rows.Count > 0)
@@ -19,7 +19,7 @@ namespace RigoBikeshop.Infraestructure.Data
             }
         }
 
-        public DataTable GetIdCliente(int idCliente)
+        public static DataTable GetIdCliente(int idCliente)
         {
 
             List<SqlParameter> lista = new List<SqlParameter>();
@@ -29,7 +29,7 @@ namespace RigoBikeshop.Infraestructure.Data
 
         }
 
-        public void CreateCliente(Clientes oClientes)
+        public static void CreateCliente(Clientes oClientes)
         {
             List<SqlParameter> listaInsertar = new List<SqlParameter>();
 
@@ -49,7 +49,7 @@ namespace RigoBikeshop.Infraestructure.Data
 
         }
 
-        public void UpdateCliente(Clientes oCliente)
+        public static void UpdateCliente(Clientes oCliente)
         {
             List<SqlParameter> listaInsertar = new List<SqlParameter>();
 
@@ -67,7 +67,7 @@ namespace RigoBikeshop.Infraestructure.Data
             Conexion.EjecutarOperacion("ClientesUpdate", listaInsertar, CommandType.StoredProcedure);
         }
 
-        public void DeleteCliente(Clientes oCliente)
+        public static void DeleteCliente(Clientes oCliente)
         {
             List<SqlParameter> lista = new List<SqlParameter>();
             SqlParameter codigo = new SqlParameter("@P_IdCliente", oCliente.IdCliente);

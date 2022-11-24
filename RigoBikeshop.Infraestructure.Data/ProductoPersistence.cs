@@ -5,9 +5,9 @@ using RigoBikeshop.Domain.Entities;
 
 namespace RigoBikeshop.Infraestructure.Data
 {
-    public class ProductoPersistence
+    public static class ProductoPersistence
     {
-        public DataTable GetAllProductos()
+        public static DataTable GetAllProductos()
         {
 
             if (Conexion.EjecutarConsulta("GetAllProducto", CommandType.StoredProcedure).Rows.Count > 0)
@@ -20,7 +20,7 @@ namespace RigoBikeshop.Infraestructure.Data
             }
         }
 
-        public DataTable GetIdProducto(int idProducto)
+        public static DataTable GetIdProducto(int idProducto)
         {
 
             List<SqlParameter> lista = new List<SqlParameter>();
@@ -30,7 +30,7 @@ namespace RigoBikeshop.Infraestructure.Data
 
         }
 
-        public void CreateProducto(Producto oProductos)
+        public static void CreateProducto(Producto oProductos)
         {
             List<SqlParameter> listaInsertar = new List<SqlParameter>();
 
@@ -48,7 +48,7 @@ namespace RigoBikeshop.Infraestructure.Data
 
         }
 
-        public void UpdateProducto(Producto oProducto)
+        public static void UpdateProducto(Producto oProducto)
         {
             List<SqlParameter> listaInsertar = new List<SqlParameter>();
 
@@ -65,7 +65,7 @@ namespace RigoBikeshop.Infraestructure.Data
             Conexion.EjecutarOperacion("ProductosUpdate", listaInsertar, CommandType.StoredProcedure);
         }
 
-        public void DeleteProducto(Producto oProducto)
+        public static void DeleteProducto(Producto oProducto)
         {
             List<SqlParameter> lista = new List<SqlParameter>();
             SqlParameter codigo = new SqlParameter("@P_IdProducto", oProducto.IdProducto);

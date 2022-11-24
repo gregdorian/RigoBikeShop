@@ -41,15 +41,12 @@ namespace RigoBikeshop.Infraestructure.Data
             };
             SqlParameter IdClient = new SqlParameter("@P_IdCliente", oFacturaEncabezado.IdCliente);
             SqlParameter NumFac = new SqlParameter("@P_NumeroFactura", oFacturaEncabezado.NumeroFactura);
-            SqlParameter CodigoCliente = new SqlParameter("@P_CodigoEmpresa", oFacturaEncabezado.CodigoEmpresa);
-            SqlParameter CodigoEmpresa = new SqlParameter("@P_CodigoCliente", oFacturaEncabezado.CodigoCliente);
             SqlParameter Total = new SqlParameter("@P_Total", oFacturaEncabezado.Total);
             SqlParameter FechaFactura = new SqlParameter("@P_FechaFactura", oFacturaEncabezado.FechaFactura);
+            
 
             listaInsertar.Add(NumFac);
             listaInsertar.Add(IdClient);
-            listaInsertar.Add(CodigoCliente);
-            listaInsertar.Add(CodigoEmpresa);
             listaInsertar.Add(Total);
             listaInsertar.Add(FechaFactura);
             listaInsertar.Add(paramId);
@@ -65,15 +62,11 @@ namespace RigoBikeshop.Infraestructure.Data
 
             SqlParameter IdFacturaEncabezado = new SqlParameter("@P_IdFacturaEncabezado", oFacturaEncabezado.IdEncabezado);
             SqlParameter NumFac = new SqlParameter("@P_IdProducto", oFacturaEncabezado.NumeroFactura);
-            SqlParameter CodigoCliente = new SqlParameter("@P_CodigoEmpresa", oFacturaEncabezado.CodigoEmpresa);
-            SqlParameter CodigoEmpresa = new SqlParameter("@P_CodigoClient", oFacturaEncabezado.CodigoCliente);
             SqlParameter Total = new SqlParameter("@P_Total", oFacturaEncabezado.Total);
             SqlParameter FechaFactura = new SqlParameter("@P_FechaFactura", oFacturaEncabezado.FechaFactura);
 
             listaInsertar.Add(IdFacturaEncabezado);
             listaInsertar.Add(NumFac);
-            listaInsertar.Add(CodigoCliente);
-            listaInsertar.Add(CodigoEmpresa);
             listaInsertar.Add(Total);
             listaInsertar.Add(FechaFactura);
 

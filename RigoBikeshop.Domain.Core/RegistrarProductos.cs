@@ -14,11 +14,8 @@ namespace Domain.core
         {
             DataTable dtConsultaProductos;
 
-            ProductoPersistence ProducPer = new ProductoPersistence();
+            dtConsultaProductos = ProductoPersistence.GetAllProductos();
 
-            dtConsultaProductos = ProducPer.GetAllProductos();
-
-            //List<DataRow> lstProductos = dtConsultaProductos.AsEnumerable().ToList();
 
             return dtConsultaProductos;
         }
@@ -27,8 +24,7 @@ namespace Domain.core
         {
             try
             {
-                ProductoPersistence ProducPer = new ProductoPersistence();
-                ProducPer.CreateProducto(oProducto);
+                ProductoPersistence.CreateProducto(oProducto);
             }
             catch (Exception ex)
             {
@@ -42,8 +38,7 @@ namespace Domain.core
         {
             try
             {
-                ProductoPersistence ProducPer = new ProductoPersistence();
-                ProducPer.UpdateProducto(oProducto);
+                ProductoPersistence.UpdateProducto(oProducto);
             }
             catch (Exception ex)
             {
@@ -55,8 +50,7 @@ namespace Domain.core
         {
             try
             {
-                ProductoPersistence ProducPer = new ProductoPersistence();
-                ProducPer.DeleteProducto(oProducto);
+                ProductoPersistence.DeleteProducto(oProducto);
             }
             catch (Exception ex)
             {
