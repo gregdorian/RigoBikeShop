@@ -1,6 +1,7 @@
 ﻿using System.Configuration;
 using System.Data;
 using Microsoft.Data.SqlClient;
+using Microsoft.Extensions.Configuration;
 
 namespace RigoBikeshop.Infraestructure.Data
 {

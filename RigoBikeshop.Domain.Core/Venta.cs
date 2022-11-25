@@ -3,9 +3,10 @@ using System.Data;
 
 using RigoBikeshop.Domain.Entities;
 using RigoBikeshop.Infraestructure.Data;
-using Newtonsoft.JSON;
+using Newtonsoft.Json;
+using System.Collections.Generic;
 
-namespace Domain.core
+namespace RigoBikeshop.Domain.Core
 {
     public static class Venta
     {
@@ -13,59 +14,59 @@ namespace Domain.core
         static readonly FacturaVentaDTO VtaDto = new FacturaVentaDTO(); 
         static readonly FacturaEncabezado FacEnc = new FacturaEncabezado();
 
-        public static List<string> ListarFacturaVenta()
+        public static string ListarFacturaVenta()
         {
             DataTable dtConsultaProductos;
             string DtaTblJSONStr=string.Empty;
             
             dtConsultaProductos = ProductoPersistence.GetAllProductos();
               
-            DtaTblJSONStr = JSONConvert.SerializeObject(dtConsultaProductos);  
+            DtaTblJSONStr = JsonConvert.SerializeObject(dtConsultaProductos);  
 
             return DtaTblJSONStr;
         }
 
-        public static List<string> ConsultarFacturaVenta(int idFacturaEncabezado)
+        public static string ConsultarFacturaVenta(int idFacturaEncabezado)
         {
             DataTable dtConsultaFactura;
             dtConsultaFactura = FacturaPersistence.GetIdFactura(idFacturaEncabezado);
-            //dtConsultaFactura.Rows.OfType<DataRow>().Select(dr => dr.Field<MyType>(columnName)).ToList();
 
-            List<string> lstFactura = JsonConvert.SerializeObject(dtConsultaFactura);
+            var lstFactura = JsonConvert.SerializeObject(dtConsultaFactura);
             return lstFactura;
         }
 
-        public static List<string> ConsultarProductoId(int idProducto)
+        public static string ConsultarProductoId(int idProducto)
         {
 
             DataTable dtConsultaProducto;
             dtConsultaProducto = ProductoPersistence.GetIdProducto(idProducto);
 
-            List<string> lstProducto = JsonConvert.SerializeObject(dtConsultaProducto);
+            var lstProducto = JsonConvert.SerializeObject(dtConsultaProducto);
 
             return lstProducto;
         }
 
-        public static List<DataRow> ConsultarIdCliente(int idCliente)
+        public static string ConsultarIdCliente(int idCliente)
         {
 
             DataTable dtConsultaCliente;
+
             dtConsultaCliente = ClientesPersistence.GetIdCliente(idCliente);
 
-            List<DataRow> lstCliente = dtConsultaCliente.AsEnumerable().ToList();
+            var lstCliente = JsonConvert.SerializeObject(dtConsultaCliente);
 
             return lstCliente;
         }
 
-        public static List<DataRow> ListarCliente()
+        public static string ListarCliente()
         {
 
-            DataTable dtConsultaCliente;
-            dtConsultaCliente = ClientesPersistence.GetAllClientes();
+            DataTable dtCliente;
+            dtCliente = ClientesPersistence.GetAllClientes();
 
-            List<DataRow> lstCliente = dtConsultaCliente.AsEnumerable().ToList();
+            var lstFactura = JsonConvert.SerializeObject(dtCliente);
+            return lstFactura;
 
-            return lstCliente;
         }
 
         public static FacturaDetalle AddLine(int IdProducto, int IdFacturaEncabezado, int Cantidad)
