@@ -5,12 +5,12 @@ namespace RigoBikeshop.Domain.Entities
     {
         public int IdCliente { get; set; }
 
-        public int CodigoCliente { get; set; }
+        public string CodigoCliente { get; set; }
 
-        public int NombreCliente { get; set; }
+        public string NombreCliente { get; set; }
 
-        public int DireccionCliente { get; set; }
+        public string DireccionCliente { get; set; }
 
-        public int TelefonoCliente { get; set; }
+        public string TelefonoCliente { get; set; }
     }
 }

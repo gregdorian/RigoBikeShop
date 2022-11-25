@@ -3,7 +3,7 @@ using System.Data;
 
 using RigoBikeshop.Domain.Core;
 using RigoBikeshop.Domain.Entities;
-
+using Newtonsoft.Json;
 
 namespace RigoBikeshop.UIWebApi.Controllers
 {
@@ -16,10 +16,33 @@ namespace RigoBikeshop.UIWebApi.Controllers
 
         }
 
-        [HttpGet]
-        public ActionResult<string> Get()
+        [HttpGet("~/clientes")]
+        [Produces("application/json")]
+        public IActionResult GetCliente()
         {
-            return Venta.ListarCliente();
+            var resp = JsonConvert.DeserializeObject<List<Clientes>>(Venta.ListarCliente());
+            return Ok(resp);
+        }
+
+        [HttpGet("~/productos")]
+        [Produces("application/json")]
+        public IActionResult GetProducto()
+        {
+
+            var resp = JsonConvert.DeserializeObject<List<Producto>>(Venta.ListarProducto());
+            return Ok(resp);
+        }
+
+
+        [HttpPost]
+        public void Post([FromBody] FacturaVentaDTO oVenta)
+        {
+        }
+
+
+        [HttpPut("{id}")]
+        public void Put(int id, [FromBody] string value)
+        {
         }
     }
 }

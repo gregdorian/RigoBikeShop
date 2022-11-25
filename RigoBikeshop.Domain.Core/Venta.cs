@@ -64,11 +64,21 @@ namespace RigoBikeshop.Domain.Core
             DataTable dtCliente;
             dtCliente = ClientesPersistence.GetAllClientes();
 
-            var lstFactura = JsonConvert.SerializeObject(dtCliente);
-            return lstFactura;
+            var lstCliente = JsonConvert.SerializeObject(dtCliente);
+            return lstCliente;
 
         }
 
+        public static string ListarProducto()
+        {
+
+            DataTable dtProducto;
+            dtProducto = ProductoPersistence.GetAllProductos();
+
+            var lstProducto = JsonConvert.SerializeObject(dtProducto);
+            return lstProducto;
+
+        }
         public static FacturaDetalle AddLine(int IdProducto, int IdFacturaEncabezado, int Cantidad)
         {
             //check Not Zero Cantidad
