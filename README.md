@@ -34,3 +34,11 @@ Estructurado el proyecto en capas
 •	Entidades = RigoBikeshop.Domain.Entities
 
 •	Presentación = RigoBikeshop.UIWebApi
+
+# Cambiar la Cadena de conexion
+
+**Se encuentra en appSettings.json**
+
+"ConnectionStrings": {
+   "DefaultConnection" : "Server=<<Instancia/NombreServidor>> ; Database= <<NombreBaseDatos>>; Integrated Security=true; TrustServerCertificate=true"
+   }
