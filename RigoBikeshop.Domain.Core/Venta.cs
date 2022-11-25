@@ -12,8 +12,23 @@ namespace Domain.core
         static readonly FacturaVentaDTO VtaDto = new FacturaVentaDTO(); 
         static readonly FacturaEncabezado FacEnc = new FacturaEncabezado();
 
-        
+        public static List<DataRow> ListarFacturaVenta()
+        {
+            DataTable dtListaFactura;
+            dtListaFactura = FacturaPersistence.GetAllFacturas();
 
+            List<DataRow> lstFactura = dtListaFactura.AsEnumerable().ToList();
+            return lstFactura;
+        }
+
+        public static List<DataRow> ConsultarFacturaVenta(int idFacturaEncabezado)
+        {
+            DataTable dtConsultaFactura;
+            dtConsultaFactura = FacturaPersistence.GetIdFactura(idFacturaEncabezado);
+
+            List<DataRow> lstFactura = dtConsultaFactura.AsEnumerable().ToList();
+            return lstFactura;
+        }
 
         public static List<DataRow> ConsultarProductoId(int idProducto)
         {
@@ -31,6 +46,17 @@ namespace Domain.core
 
             DataTable dtConsultaCliente;
             dtConsultaCliente = ClientesPersistence.GetIdCliente(idCliente);
+
+            List<DataRow> lstCliente = dtConsultaCliente.AsEnumerable().ToList();
+
+            return lstCliente;
+        }
+
+        public static List<DataRow> ListarCliente()
+        {
+
+            DataTable dtConsultaCliente;
+            dtConsultaCliente = ClientesPersistence.GetAllClientes();
 
             List<DataRow> lstCliente = dtConsultaCliente.AsEnumerable().ToList();
 

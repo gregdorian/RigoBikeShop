@@ -1,6 +1,8 @@
-﻿using Microsoft.AspNetCore.Mvc;
-
-// For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+﻿using Domain.core;
+using Microsoft.AspNetCore.Mvc;
+using RigoBikeshop.Domain;
+using RigoBikeshop.Domain.Entities;
+using System.Data;
 
 namespace RigoBikeshop.UIWebApi.Controllers
 {
@@ -10,9 +12,9 @@ namespace RigoBikeshop.UIWebApi.Controllers
     {
         // GET: api/<VentasController>
         [HttpGet]
-        public IEnumerable<string> Get()
+        public IList<DataRow> Get()
         {
-            return new string[] { "value1", "value2" };
+            return Venta.ListarCliente();
         }
 
         // GET api/<VentasController>/5
