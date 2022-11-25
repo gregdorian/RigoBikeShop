@@ -15,7 +15,7 @@ Se desarrollo en:
 
 Se Realizaron los siguientes entidades/Tablas
 
-![Tuya](https://user-images.githubusercontent.com/3777303/155810877-4b296341-ffe1-4139-9034-f4aeb7e4dcc7.PNG)
+![Rigo](https://github.com/gregdorian/RigoBikeShop/blob/master/RigoRigo.jpg)
 
 Producto
 
@@ -42,3 +42,6 @@ Estructurado el proyecto en capas
 "ConnectionStrings": {
    "DefaultConnection" : "Server=<<Instancia/NombreServidor>> ; Database= <<NombreBaseDatos>>; Integrated Security=true; TrustServerCertificate=true"
    }
+SP Usadas en el proyecto
+
+![Rigo](https://github.com/gregdorian/RigoBikeShop/blob/master/spRigoRigo.jpg)
