@@ -7,8 +7,9 @@ Se desarrollo en:
 
 •	 Ado .net
 
-•	Versionamiento de código (Git) https://github.com/gregdorian/RigoBikeShop
+•	 Con Procedimientos Almacenados (ver Listado)
 
+•	Versionamiento de código (Git) https://github.com/gregdorian/RigoBikeShop
 
 •	Manejo de Base de Datos sql Server
 
@@ -23,3 +24,13 @@ FacturaEnc
 Cliente
 
 FacturaDetalle
+
+Estructurado el proyecto en capas 
+
+•	Acceso a datos = RigoBikeshop.Infraestructure.Data
+
+•	Negocio = RigoBikeshop.Domain.Core
+
+•	Entidades = RigoBikeshop.Domain.Entities
+
+•	Presentación = RigoBikeshop.UIWebApi
