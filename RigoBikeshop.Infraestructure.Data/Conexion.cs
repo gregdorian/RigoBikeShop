@@ -7,7 +7,10 @@ namespace RigoBikeshop.Infraestructure.Data
     internal class Conexion
     {
 
-
+        
+        private static IConfiguration configuration;
+        private static readonly string cadenaConexion = configuration.GetConnectionString("sqlConexionApp");
+        private static SqlConnection conexion = new SqlConnection(cadenaConexion);
 
         public static Int32 IdEscalar;
 
