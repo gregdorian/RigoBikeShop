@@ -3,6 +3,7 @@ using System.Data;
 
 using RigoBikeshop.Domain.Entities;
 using RigoBikeshop.Infraestructure.Data;
+using Newtonsoft.JSON;
 
 namespace Domain.core
 {
@@ -12,31 +13,35 @@ namespace Domain.core
         static readonly FacturaVentaDTO VtaDto = new FacturaVentaDTO(); 
         static readonly FacturaEncabezado FacEnc = new FacturaEncabezado();
 
-        public static List<DataRow> ListarFacturaVenta()
+        public static List<string> ListarFacturaVenta()
         {
-            DataTable dtListaFactura;
-            dtListaFactura = FacturaPersistence.GetAllFacturas();
+            DataTable dtConsultaProductos;
+            string DtaTblJSONStr=string.Empty;
+            
+            dtConsultaProductos = ProductoPersistence.GetAllProductos();
+              
+            DtaTblJSONStr = JSONConvert.SerializeObject(dtConsultaProductos);  
 
-            List<DataRow> lstFactura = dtListaFactura.AsEnumerable().ToList();
-            return lstFactura;
+            return DtaTblJSONStr;
         }
 
-        public static List<DataRow> ConsultarFacturaVenta(int idFacturaEncabezado)
+        public static List<string> ConsultarFacturaVenta(int idFacturaEncabezado)
         {
             DataTable dtConsultaFactura;
             dtConsultaFactura = FacturaPersistence.GetIdFactura(idFacturaEncabezado);
+            //dtConsultaFactura.Rows.OfType<DataRow>().Select(dr => dr.Field<MyType>(columnName)).ToList();
 
-            List<DataRow> lstFactura = dtConsultaFactura.AsEnumerable().ToList();
+            List<string> lstFactura = JsonConvert.SerializeObject(dtConsultaFactura);
             return lstFactura;
         }
 
-        public static List<DataRow> ConsultarProductoId(int idProducto)
+        public static List<string> ConsultarProductoId(int idProducto)
         {
 
             DataTable dtConsultaProducto;
             dtConsultaProducto = ProductoPersistence.GetIdProducto(idProducto);
 
-            List<DataRow> lstProducto = dtConsultaProducto.AsEnumerable().ToList();
+            List<string> lstProducto = JsonConvert.SerializeObject(dtConsultaProducto);
 
             return lstProducto;
         }

@@ -7,11 +7,14 @@ namespace RigoBikeshop.Infraestructure.Data
     internal class Conexion
     {
 
-        //private static readonly string cadenaConexion = ConfigurationManager.ConnectionStrings["sqlConexionApp"].ConnectionString;
-        private static readonly string cadenaConexion = "Data Source=ACER-5151\\SQLEXPRESS01;Initial Catalog=cyclingbikeshop;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
+        
+        private static IConfiguration configuration;
+        private static readonly string cadenaConexion = configuration.GetConnectionString("sqlConexionApp");
         private static SqlConnection conexion = new SqlConnection(cadenaConexion);
 
         public static Int32 IdEscalar;
+
+        
 
         public static bool Conectar()
         {
