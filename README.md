@@ -45,3 +45,11 @@ Estructurado el proyecto en capas
 SP Usadas en el proyecto
 
 ![Rigo](https://github.com/gregdorian/RigoBikeShop/blob/master/spRigoRigo.jpg)
+
+**FRONTEND** 
+Se realizo webApi restfull con Asp.net Core
+![Rigo](https://github.com/gregdorian/RigoBikeShop/blob/master/ConsultaClientes.jpg)
+Presentación se llama el webApi en pagina Razor MVC de Asp.net Core
+![Rigo](https://github.com/gregdorian/RigoBikeShop/blob/master/PantallaVenta.jpg)
+se debe tener encuenta que se esten inicializando estos dos proyectos para que tome los Endpoints del web api.
+![Rigo](https://github.com/gregdorian/RigoBikeShop/blob/master/propiedadesSolucion.jpg)
