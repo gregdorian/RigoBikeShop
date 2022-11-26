@@ -37,9 +37,7 @@ namespace RigoBikeshop.UIWebApi.Controllers
         [HttpPost]
         public void Post([FromBody] FacturaVentaDTO oVentaDto)
         {
-               //FacturaEncabezado oFactura= oVentaDto.
-
-
+            Venta.RegistrarFacturaVenta(oVentaDto);
         }
 
 

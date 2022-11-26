@@ -3,13 +3,15 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.4.33103.184
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RigoBikeshop.Domain.Core", "RigoBikeshop.Domain.Core\RigoBikeshop.Domain.Core.csproj", "{47DE500B-E667-4FF8-8E82-96594EAB561F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RigoBikeshop.Domain.Core", "RigoBikeshop.Domain.Core\RigoBikeshop.Domain.Core.csproj", "{47DE500B-E667-4FF8-8E82-96594EAB561F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RigoBikeshop.Domain.Entities", "RigoBikeshop.Domain.Entities\RigoBikeshop.Domain.Entities.csproj", "{4F0F2E6B-27A7-43BB-8D60-0B234FB6F597}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RigoBikeshop.Domain.Entities", "RigoBikeshop.Domain.Entities\RigoBikeshop.Domain.Entities.csproj", "{4F0F2E6B-27A7-43BB-8D60-0B234FB6F597}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RigoBikeshop.Infraestructure.Data", "RigoBikeshop.Infraestructure.Data\RigoBikeshop.Infraestructure.Data.csproj", "{9B341FFB-9AA8-4382-8DB7-CE97114B5881}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RigoBikeshop.Infraestructure.Data", "RigoBikeshop.Infraestructure.Data\RigoBikeshop.Infraestructure.Data.csproj", "{9B341FFB-9AA8-4382-8DB7-CE97114B5881}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RigoBikeshop.UIWebApi", "rigorigoBikeshop.UIWebApi\RigoBikeshop.UIWebApi.csproj", "{C4CA4D92-94DE-4C40-81B1-086236FD400C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RigoBikeshop.UIWebApi", "rigorigoBikeshop.UIWebApi\RigoBikeshop.UIWebApi.csproj", "{C4CA4D92-94DE-4C40-81B1-086236FD400C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RigoBikeShop.Mvc", "RigoBikeShop.Mvc\RigoBikeShop.Mvc.csproj", "{476F0AA9-1E71-4ABB-971B-118F5F9347E0}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{C4CA4D92-94DE-4C40-81B1-086236FD400C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C4CA4D92-94DE-4C40-81B1-086236FD400C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C4CA4D92-94DE-4C40-81B1-086236FD400C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{476F0AA9-1E71-4ABB-971B-118F5F9347E0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{476F0AA9-1E71-4ABB-971B-118F5F9347E0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{476F0AA9-1E71-4ABB-971B-118F5F9347E0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{476F0AA9-1E71-4ABB-971B-118F5F9347E0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
