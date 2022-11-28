@@ -8,13 +8,25 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 var app = builder.Build();
+//services cors
+builder.Services.AddCors(p => p.AddPolicy("MVC", builder =>
+{
 
+    builder.SetIsOriginAllowed(origin => new Uri(origin).Host == "localhost").AllowAnyMethod().AllowAnyHeader();
+}));
+var app = builder.Build();
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
     app.UseSwaggerUI();
 }
+
+
+//app cors
+app.UseCors("MVC");
+app.UseHttpsRedirection();
+app.UseAuthorization();
 
 app.UseHttpsRedirection();
 

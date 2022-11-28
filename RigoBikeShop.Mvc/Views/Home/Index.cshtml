@@ -12,21 +12,19 @@
         <div class="row">
             <div class="col-sm-6">
                 <label class="form-label">Fecha Factura</label>
-                <input class="form-control form-control-sm" type="text" id="txtFechaFactura" readonly>
+                <input class="form-control form-control-sm" type="text" id="txtFechaFactura">
             </div>
             <div class="col-sm-6">
                 <label class="form-label">Numero Factura</label>
-                <input class="form-control form-control-sm" type="text" id="txtNumeroFactura" readonly>
+                <input class="form-control form-control-sm" type="text" id="txtNumeroFactura">
             </div>
         </div>
 
         <div class="row">
             <div class="col-sm-3">
                 <label class="form-label">Codigo Cliente</label>
-               @* <input class="form-control form-control-sm" type="text" id="txtCodigoCliente" readonly>*@
-                    <select class="form-select" aria-label="seleccione Cliente" id="selCliente">
-                          <option selected>Open this select menu</option>
-                    </select>
+
+                <select class="form-select" aria-label="seleccione Cliente" id="selCliente" name="selCliente"></select>
             </div>
             <div class="col-sm-3">
                 <label class="form-label">Nombre Cliente</label>
@@ -46,9 +44,8 @@
             <div class="col-sm-3">
                 <label class="form-label">Nombre Producto</label>
                 @*<input class="form-control form-control-sm" type="text" id="txtproducto">*@
-                    <select class="form-select" aria-label="seleccione producto" id="selProducto">
-                        <option selected>Open this select menu</option>
-                    </select>
+
+                <select class="form-select" aria-label="seleccione producto" id="selProducto" name="selProducto"></select>
             </div>
             <div class="col-sm-3">
                 <label class="form-label">Precio</label>
@@ -91,13 +88,61 @@
 @section Scripts{
 
     <script>
+        //$(document).ready(function () {
+        //    $.ajax({
+        //        type: "GET",
+        //        url: "https://localhost:7123/api/productos",
+        //        data: "{}",
+        //        success: function (data) {
+        //
+        //            alert(data);
+        //            var s = '<option value="-1">seleccione Producto</option>';
+        //            for (var i = 0; i < data.length; i++) {
+        //                s += '<option value="' + data[i].IdProducto + '">' + data[i].NombrePoducto + '</option>';
+        //            }
+        //            $("#txtprecio").html(s);
+        //        }
+        //    });
+        //});
 
-        $('#selProducto').on('onchange', function () {
-            $.get('../api/productos/' + Idproducto, {}, function (returnedData) {
-                $("#txtproducto").attr('value', returnedData["producto"]["NombreProducto"]);
-                $("#txtprecio").val(returnedData["producto"]["PrecioUnitario"]["PrecioUnitario"]);
-            });
+        let dropdown = $('#selProducto');
+
+        dropdown.empty();
+
+        dropdown.append('<option selected="true" disabled>seleccione Producto</option>');
+        dropdown.prop('selectedIndex', 0);
+
+        const url = 'https://localhost:7123/api/productos';
+
+        // Populate dropdown with list of provinces
+        $.getJSON(url, function (data) {
+            $.each(data, function (key, entry) {
+                dropdown.append($('<option></option>').attr('value', entry.Idproducto).text(entry.nombreProducto));
+            })
         });
+ let dropd = $('#selProducto');
+
+        dropd.empty();
+
+        dropd.append('<option selected="true" disabled>seleccione cliente</option>');
+        dropd.prop('selectedIndex', 0);
+
+        const url = 'https://localhost:7123/api/cliente';
+
+        // Populate dropdown with list of provinces
+        $.getJSON(url, function (data) {
+            $.each(data, function (key, entry) {
+                dropd.append($('<option></option>').attr('value', entry.IdCliente).text(entry.nombreCliente));
+            })
+        });
+
+        //$('#selProducto').on('onchange', function () {
+        //    //$.get('../api/productos/' + Idproducto, {}, function (returnedData) {
+        //    //    $("#txtproducto").attr('value', returnedData["producto"]["NombreProducto"]);
+        //    //    $("#txtprecio").val(returnedData["producto"]["PrecioUnitario"]["PrecioUnitario"]);
+        //    //});
+
+        //});
 
         $('#selCliente').on('onchange', function () {
             var SequenceNumberOrder = SequenceNumberOrder + 1;
@@ -109,14 +154,12 @@
             var facNumber = OrderYear + OrderMonth + SequenceNumberOrder;
             var fecFac = OrderDay + "/" + OrderMonth + "/" + OrderYear;
 
-            document.getElementById('txtNumeroFactura').value = facNumber;
-            document.getElementById('txtFechaFactura').value = fecFac;
+            $("#txtNumeroFactura").value = facNumber;
+            $("#txtFechaFactura").value = fecFac;
+            $("#txtFechaFactura").prop("readonly", true);
+            $("#txtNumeroFactura").prop("readonly", true);
 
-            $.get('../api/productos/' + Idcliente, {}, function (returnedData) {
-                $("#txtNombreCliente").attr('value', returnedData["clientes"]["NombreProducto"]);
-                $("#txtDireccionCliente").val(returnedData["clientes"]["DireccionCliente"]["DireccionCliente"]);
-                $("#txtTelefonoCliente").val(returnedData["clientes"]["TelefonoCliente"]["TelefonoCliente"]);
-            });
+            
         });
 
 
