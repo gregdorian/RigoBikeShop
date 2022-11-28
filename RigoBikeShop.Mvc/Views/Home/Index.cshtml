@@ -94,7 +94,6 @@
         let dropd = $('#selCliente');
 
         dropd.empty();
-        dropdown.append('<option selected="true" disabled>seleccione Producto</option>');
         dropd.append('<option selected="true" disabled>seleccione cliente</option>');
         dropd.prop('selectedIndex', 0);
 
@@ -111,25 +110,19 @@
         let dropdown = $('#selProducto');
 
         dropdown.empty();
-        });
         dropdown.append('<option selected="true" disabled>seleccione Producto</option>');
         dropdown.prop('selectedIndex', 0);
 
         const url = 'https://localhost:7123/productos';
-
      
         $.getJSON(url, function (data) {
             $.each(data, function (key, entry) {
                 dropdown.append($('<option></option>').attr('value', entry.Idproducto).text(entry.nombreProducto));
             })
         });
-        $.getJSON(url, function (data) {
-            $.each(data, function (key, entry) {
-                dropd.append($('<option></option>').attr('value', entry.IdCliente).text(entry.nombreCliente));
-            })
-        });
 
-        $('#selCliente').on('onchange', function () {
+
+        $('#selCliente').on('click', function () {
             var SequenceNumberOrder = SequenceNumberOrder + 1;
 
             const OrderYear = new Date().getYear();
