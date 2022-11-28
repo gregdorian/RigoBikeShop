@@ -10,8 +10,7 @@ builder.Services.AddSwaggerGen();
 //services cors
 builder.Services.AddCors(p => p.AddPolicy("_mvc", builder =>
 {
-
-    builder.SetIsOriginAllowed(origin => new Uri(origin).Host == "localhost").AllowAnyMethod().AllowAnyHeader();
+    builder.SetIsOriginAllowed(origin => new Uri(origin).Host == "https://localhost:7123/").AllowAnyMethod().AllowAnyHeader();
 }));
 
 var app = builder.Build();
@@ -24,6 +23,8 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
+
+app.UseHttpsRedirection();
 
 //app cors
 app.UseCors("_mvc");

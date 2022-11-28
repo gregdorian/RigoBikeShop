@@ -10,7 +10,7 @@ namespace RigoBikeshop.Infraestructure.Data
 
         
         private static IConfiguration configuration;
-        private static readonly string cadenaConexion = "Data Source=ACER-5151\\SQLEXPRESS;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
+        private static readonly string cadenaConexion = "Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=cyclingbikeshop;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
         //private static readonly string cadenaConexion = configuration.GetConnectionString("sqlConexionApp");
         private static SqlConnection conexion = new SqlConnection(cadenaConexion);
 
