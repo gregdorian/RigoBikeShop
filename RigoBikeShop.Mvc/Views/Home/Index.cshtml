@@ -88,53 +88,55 @@
 @section Scripts{
 
     <script>
-        //$(document).ready(function () {
-        //    $.ajax({
-        //        type: "GET",
-        //        url: "https://localhost:7123/api/productos",
-        //        data: "{}",
-        //        success: function (data) {
+        $(document).ready(function () {
+            $.ajax({
+                type: "GET",
+                url: "https://localhost:7123/api/productos",
+                data: "{}",
+                success: function (data) {
         
-        //            alert(data);
-        //            var s = '<option value="-1">seleccione Producto</option>';
-        //            for (var i = 0; i < data.length; i++) {
-        //                s += '<option value="' + data[i].IdProducto + '">' + data[i].NombrePoducto + '</option>';
-        //            }
-        //            $("#txtprecio").html(s);
-        //        }
-        //    });
+                    alert(data);
+                    var s = '<option value="-1">seleccione Producto</option>';
+                    for (var i = 0; i < data.length; i++) {
+                        s += '<option value="' + data[i].IdProducto + '">' + data[i].NombrePoducto + '</option>';
+                    }
+                    $("#txtprecio").html(s);
+                }
+            });
+        });
+
+        //let dropdown = $('#selProducto');
+
+        //dropdown.empty();
+
+        //dropdown.append('<option selected="true" disabled>seleccione Producto</option>');
+        //dropdown.prop('selectedIndex', 0);
+
+        //const url = ;
+
+        // Populate dropdown with list of provinces
+        //$.getJSON(url, function (data) {
+        //    $.each(data, function (key, entry) {
+        //        dropdown.append($('<option></option>').attr('value', entry.Idproducto).text(entry.nombreProducto));
+        //    })
         //});
-
-        let dropdown = $('#selProducto');
-
-        dropdown.empty();
-
-        dropdown.append('<option selected="true" disabled>seleccione Producto</option>');
-        dropdown.prop('selectedIndex', 0);
-
-        const url = 'https://localhost:7123/api/productos';
-
-         Populate dropdown with list of provinces
-        $.getJSON(url, function (data) {
-            $.each(data, function (key, entry) {
-                dropdown.append($('<option></option>').attr('value', entry.Idproducto).text(entry.nombreProducto));
-            })
-        });
         
         
         
-        let dropd = $('#selProducto');
+        //let dropd = $('#selProducto');
 
-        dropd.empty();
+        //dropd.empty();
 
-        dropd.append('<option selected="true" disabled>seleccione cliente</option>');
-        dropd.prop('selectedIndex', 0);
+        //dropd.append('<option selected="true" disabled>seleccione cliente</option>');
+        //dropd.prop('selectedIndex', 0);
 
-        $.getJSON(url, function (data) {
-            $.each(data, function (key, entry) {
-                dropd.append($('<option></option>').attr('value', entry.IdCliente).text(entry.nombreCliente));
-            })
-        });
+
+
+        //$.getJSON(url, function (data) {
+        //    $.each(data, function (key, entry) {
+        //        dropd.append($('<option></option>').attr('value', entry.IdCliente).text(entry.nombreCliente));
+        //    })
+        //});
 
         //$('#selProducto').on('onchange', function () {
         //    //$.get('../api/productos/' + Idproducto, {}, function (returnedData) {
