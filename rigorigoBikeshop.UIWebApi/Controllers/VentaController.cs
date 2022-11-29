@@ -19,19 +19,17 @@ namespace RigoBikeshop.UIWebApi.Controllers
         }
 
         [HttpGet("~/clientes")]
-        //[Produces("application/json")]
-        public IActionResult GetCliente()
+        public IEnumerable<Clientes> GetClientes()
         {
-            return Ok(Venta.ListarCliente());
+            
+            return Venta.ListarCliente();
         }
 
         [HttpGet("~/productos")]
-        //[Produces("application/json")]
         public IEnumerable<Producto> GetProducto()
         {
-
-            var resp = Venta.ListarProducto();
-            return resp;
+;
+            return Venta.ListarProducto();
         }
 
 

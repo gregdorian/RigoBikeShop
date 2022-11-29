@@ -139,13 +139,13 @@
             $("#txtFechaFactura").prop("readonly", true);
             $("#txtNumeroFactura").prop("readonly", true);
 
-            //$("#txtNombreCliente").val($(this)next('input').focus().data('nombreCliente'));
-            //alert($(this).children(':selected').data('direccionCliente'));
-            //var l = $(this).children(':selected').data('direccionCliente')
-            //$("#txtDireccionCliente").val(l);
-            //$("#txtTelefonoCliente").val(l);
+            $("#txtNombreCliente").val(this.value);
+            $("#txtDireccionCliente").val(this.value);
+            $("#txtTelefonoCliente").val(this.value);
         });
-
+        //$('#selProducto').on('change', function () {
+        //    $("#txtprecio").val($("#selProducto").attr(dataPriz, this.precioUnitario));
+        //});
 
         $("#btnAgregar").on("click", function () {
 

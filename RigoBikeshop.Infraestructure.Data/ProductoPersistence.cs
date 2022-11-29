@@ -10,9 +10,9 @@ namespace RigoBikeshop.Infraestructure.Data
         public static DataTable GetAllProductos()
         {
 
-            if (Conexion.EjecutarConsulta("GetAllProducto", CommandType.StoredProcedure).Rows.Count > 0)
+            if (Conexion.EjecutarConsultaAsync("GetAllProducto", CommandType.StoredProcedure).Rows.Count > 0)
             {
-                return Conexion.EjecutarConsulta("GetAllProducto", CommandType.StoredProcedure);
+                return Conexion.EjecutarConsultaAsync("GetAllProducto", CommandType.StoredProcedure);
             }
             else
             {

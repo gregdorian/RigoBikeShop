@@ -100,7 +100,7 @@ namespace RigoBikeshop.Infraestructure.Data
         /// <param name="cadenaComando"></param>
         /// <param name="tipocomando"></param>
         /// <returns></returns>
-        public static DataTable EjecutarConsulta(string cadenaComando, CommandType tipocomando)
+        public static DataTable EjecutarConsultaAsync(string cadenaComando, CommandType tipocomando)
         {
             DataTable dtResult = new DataTable();
             using (SqlCommand cmd = new SqlCommand(cadenaComando, conexion))

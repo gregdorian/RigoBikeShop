@@ -78,6 +78,7 @@ namespace RigoBikeshop.Domain.Core
             return lstProducto;
 
         }
+
         public static FacturaDetalle AddLine(int IdProducto, int IdFacturaEncabezado, int Cantidad)
         {
             //check Not Zero Cantidad
