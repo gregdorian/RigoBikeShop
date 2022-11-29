@@ -122,22 +122,28 @@
         });
 
 
-        $('#selCliente').on('click', function () {
-            var SequenceNumberOrder = SequenceNumberOrder + 1;
+        $('#selCliente').on('change', function () {
+            var seq = 0;
+            seq = seq + 1;
 
-            const OrderYear = new Date().getYear();
-            const OrderMonth = new Date().getMonth() + 1;
-            const OrderDay = new Date().getDay();
+            var nowD = new Date();
+            let OrderYear = nowD.getFullYear();
+            let OrderMonth = nowD.getMonth() + 1;
+            let OrderDay = nowD.getDate();
 
-            var facNumber = OrderYear + OrderMonth + SequenceNumberOrder;
-            var fecFac = OrderDay + "/" + OrderMonth + "/" + OrderYear;
+            let facNumber = OrderYear + "-" + OrderMonth + "-" + OrderDay + "-" + seq;
+            let fecFac = OrderDay + "/" + OrderMonth + "/" + OrderYear;
 
-            $("#txtNumeroFactura").value = facNumber;
-            $("#txtFechaFactura").value = fecFac;
+            $("#txtNumeroFactura").val(facNumber);
+            $("#txtFechaFactura").val(fecFac);
             $("#txtFechaFactura").prop("readonly", true);
             $("#txtNumeroFactura").prop("readonly", true);
 
-            
+            //$("#txtNombreCliente").val($(this)next('input').focus().data('nombreCliente'));
+            //alert($(this).children(':selected').data('direccionCliente'));
+            //var l = $(this).children(':selected').data('direccionCliente')
+            //$("#txtDireccionCliente").val(l);
+            //$("#txtTelefonoCliente").val(l);
         });
 
 

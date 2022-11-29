@@ -5,6 +5,8 @@ using RigoBikeshop.Domain.Entities;
 using RigoBikeshop.Infraestructure.Data;
 using Newtonsoft.Json;
 using System.Collections.Generic;
+using System.Data.Common;
+using System.Reflection;
 
 namespace RigoBikeshop.Domain.Core
 {
@@ -58,24 +60,21 @@ namespace RigoBikeshop.Domain.Core
             return lstCliente;
         }
 
-        public static string ListarCliente()
+        public static IEnumerable<Clientes> ListarCliente()
         {
 
-            DataTable dtCliente;
-            dtCliente = ClientesPersistence.GetAllClientes();
 
-            var lstCliente = JsonConvert.SerializeObject(dtCliente);
+            var lstCliente = ConvertDataTable<Clientes>(ClientesPersistence.GetAllClientes());
+
             return lstCliente;
 
         }
 
-        public static string ListarProducto()
+        public static IEnumerable<Producto> ListarProducto()
         {
 
-            DataTable dtProducto;
-            dtProducto = ProductoPersistence.GetAllProductos();
+               var lstProducto = ConvertDataTable<Producto>(ProductoPersistence.GetAllProductos());
 
-            var lstProducto = JsonConvert.SerializeObject(dtProducto);
             return lstProducto;
 
         }
@@ -130,7 +129,32 @@ namespace RigoBikeshop.Domain.Core
             
         }
 
+        private static List<T> ConvertDataTable<T>(DataTable dt)
+        {
+            List<T> data = new List<T>();
+            foreach (DataRow row in dt.Rows)
+            {
+                T item = GetItem<T>(row);
+                data.Add(item);
+            }
+            return data;
+        }
 
-
+        private static T GetItem<T>(DataRow dr)
+        {
+            Type temp = typeof(T);
+            T obj = Activator.CreateInstance<T>();
+            foreach (DataColumn column in dr.Table.Columns)
+            {
+                foreach (PropertyInfo pro in temp.GetProperties())
+                {
+                    if (pro.Name == column.ColumnName)
+                        pro.SetValue(obj, dr[column.ColumnName], null);
+                    else
+                        continue;
+                }
+            }
+            return obj;
+        }
     }
 }

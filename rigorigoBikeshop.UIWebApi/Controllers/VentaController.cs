@@ -4,6 +4,8 @@ using System.Data;
 using RigoBikeshop.Domain.Core;
 using RigoBikeshop.Domain.Entities;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
+using NuGet.Common;
 
 namespace RigoBikeshop.UIWebApi.Controllers
 {
@@ -17,20 +19,19 @@ namespace RigoBikeshop.UIWebApi.Controllers
         }
 
         [HttpGet("~/clientes")]
-        [Produces("application/json")]
+        //[Produces("application/json")]
         public IActionResult GetCliente()
         {
-            var resp = JsonConvert.DeserializeObject<List<Clientes>>(Venta.ListarCliente());
-            return Ok(resp);
+            return Ok(Venta.ListarCliente());
         }
 
         [HttpGet("~/productos")]
-        [Produces("application/json")]
-        public IActionResult GetProducto()
+        //[Produces("application/json")]
+        public IEnumerable<Producto> GetProducto()
         {
 
-            var resp = JsonConvert.DeserializeObject<List<Producto>>(Venta.ListarProducto());
-            return Ok(resp);
+            var resp = Venta.ListarProducto();
+            return resp;
         }
 
 
