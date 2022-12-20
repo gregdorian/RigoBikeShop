@@ -53,3 +53,32 @@ Presentación se llama el webApi en pagina Razor MVC de Asp.net Core
 ![Rigo](https://github.com/gregdorian/RigoBikeShop/blob/master/PantallaVenta.jpg)
 se debe tener encuenta que se esten inicializando estos dos proyectos para que tome los Endpoints del web api.
 ![Rigo](https://github.com/gregdorian/RigoBikeShop/blob/master/propiedadesSolucion.jpg)
+
+
+DECLARE
+ @searchString nvarchar( 50 );
+SET@searchString = '@StartProductID';
+SELECT DISTINCT
+    s.name AS Schema_Name , O.name AS Object_Name , C.text AS Object_Definition
+FROM
+     syscomments C INNER JOIN sys.objects O
+                     ON
+     C.id
+     =
+     O.object_id
+                   INNER JOIN sys.schemas S
+                   ON
+     O.schema_id
+     =
+     S.schema_id
+WHERE
+    C.text LIKE
+     '%'
+   + @searchString
+   + '%'
+ OR O.name LIKE
+     '%'
+   + @searchString
+   + '%'
+ORDER BY
+       Schema_name , Object_name;
